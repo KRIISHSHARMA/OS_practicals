@@ -9,12 +9,14 @@ int main() {
     // Create a new process
     pid = fork();
 
-    if (pid < 0) {
+    if (pid < 0) 
+    {
         perror("Fork failed");
         exit(EXIT_FAILURE);
     }
 
-    if (pid == 0) {
+    if (pid == 0) 
+    {
         // Child process
         printf("Child: Process ID: %d\n", getpid());
 
@@ -28,7 +30,8 @@ int main() {
         // If execl() fails
         perror("execl failed");
         exit(EXIT_FAILURE);
-    } else {
+    } else 
+    {
         // Parent process
         printf("Parent: Process ID: %d, Waiting for child...\n", getpid());
 

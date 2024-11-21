@@ -3,7 +3,8 @@
 #include <string.h> 
 #include <sys/utsname.h>
  
-void get_cpu_info() { 
+void get_cpu_info() 
+{ 
     FILE *file = fopen("/proc/cpuinfo", "r"); 
     if (file == NULL) { 
         perror("Failed to open /proc/cpuinfo"); 
@@ -38,7 +39,8 @@ int main() {
     struct utsname sysinfo;
 
     // Call uname syscall
-    if (uname(&sysinfo) == -1) {
+    if (uname(&sysinfo) == -1) 
+    {
         perror("uname");
         exit(EXIT_FAILURE);
     }
