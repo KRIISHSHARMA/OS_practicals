@@ -13,11 +13,10 @@ typedef struct {
 
 void roundRobinScheduling(Process processes[], int n) 
 {
-    int time = 0;              // Current time
-    int completed = 0;         // Number of completed processes
+    int time = 0;              
+    int completed = 0;         
     int total_waiting_time = 0, total_turnaround_time = 0;
 
-    // Initialize remaining time for each process
     for (int i = 0; i < n; i++) 
     {
         processes[i].remaining_time = processes[i].burst_time;
@@ -27,14 +26,12 @@ void roundRobinScheduling(Process processes[], int n)
     {
         for (int i = 0; i < n; i++) 
         {
-            // Skip process if it's already completed or not yet arrived
             if (processes[i].remaining_time == 0 || processes[i].arrival_time > time) 
             {
 
                 continue;
             }
 
-            // Execute the process for TQ or remaining time
             if (processes[i].remaining_time > TQ) 
             {
                 time += TQ;
@@ -55,7 +52,7 @@ void roundRobinScheduling(Process processes[], int n)
         }
     }
 
-    // Print process details
+    
     printf("\nProcess\tArrival Time\tBurst Time\tCompletion Time\tWaiting Time\tTurnaround Time\n");
     for (int i = 0; i < n; i++) 
     {
@@ -75,13 +72,13 @@ int main()
 {
     int n;
 
-    // Get number of processes
+    
     printf("Enter number of processes: ");
     scanf("%d", &n);
 
     Process processes[n];
 
-    // Get process details
+   
     for (int i = 0; i < n; i++) 
     {
         printf("\nEnter arrival time and burst time for process %d:\n", i + 1);
@@ -92,7 +89,6 @@ int main()
         scanf("%d", &processes[i].burst_time);
     }
 
-    // Perform Round Robin Scheduling
     roundRobinScheduling(processes, n);
 
     return 0;

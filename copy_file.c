@@ -25,10 +25,12 @@ void file_copy(char *source_file , char *destination_file)
         exit(EXIT_FAILURE);
     }
 
-    // Copy the contents from source to destination
-    while ((bytes_read = read(source_fd, buffer, MAX_BUFFER_SIZE)) > 0) {
+   
+    while ((bytes_read = read(source_fd, buffer, MAX_BUFFER_SIZE)) > 0) 
+    {
         bytes_written = write(dest_fd, buffer, bytes_read);
-        if (bytes_written != bytes_read) {
+        if (bytes_written != bytes_read) 
+        {
             perror("Error writing to destination file");
             close(source_fd);
             close(dest_fd);
@@ -36,7 +38,8 @@ void file_copy(char *source_file , char *destination_file)
         }
     }
 
-    if (bytes_read == -1) {
+    if (bytes_read == -1)
+    {
         perror("Error reading source file");
     }
 
@@ -50,7 +53,7 @@ void file_copy(char *source_file , char *destination_file)
 
 int main(int argc , char *argv[])
 {
-    if (argc != 3) 
+    if (argc != 2) 
     {
         fprintf(stderr, "Usage: %s <source_file> <destination_file>\n", argv[0]);
         exit(EXIT_FAILURE);
